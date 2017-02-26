@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded',function() {
 
 	// DOM elements references
 	var selectTitle = document.getElementById("title"),
-	otherTitle = document.createElement("input"),
+	otherTitle = document.querySelector('#other-title'),
 	colorItem = document.querySelector('#color').children,
 	numOfColors = document.querySelector('#color').children.length,
 	ticket = [], 
@@ -18,20 +18,17 @@ document.addEventListener('DOMContentLoaded',function() {
 	// ”Job Role” section of the form: ----
 
 	// A text field that will be revealed when the "Other" option is selected from the "Job Role" drop down menu.
-
+	otherTitle.style.display = 'none';
 	document.querySelector('#title').onchange=showTitle;
 
 	// Give the field an id of “other-title,” and add the placeholder text of "Your Job Role" to the field.
 
 	function showTitle(){
 		var index = this.selectedIndex;
-		if(index > 0){
-			otherTitle.id = "other-title";
-			otherTitle.type = "text";
-			otherTitle.placeholder = "Your Job Role"; 
-			selectTitle.parentNode.appendChild(otherTitle);
+		if(index === 5){
+			otherTitle.style.display = 'block';
 		}else{
-			selectTitle.parentNode.removeChild(otherTitle);
+			otherTitle.style.display = 'none';
 		}
 	}
 
